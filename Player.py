@@ -6,9 +6,11 @@ class Player:
         self.gridShips = Grid()
         self.gridShots = Grid()
 
-    def takeTurn(self):
-        # over write in the HumanPlayer and ComputerPlayer subclasses
-        pass
+    def takeTurn(self, otherPlayer ):
+    # over write in the HumanPlayer and ComputerPlayer subclasses
+    # you need access to the otherPlayer (who is the computer or human)
+    # this way you can access their grids to determine if you hit their ship
+    pass
 
     def placeShip(self, ship , size ):
         # over write in the HumanPlayer and ComputerPlayer subclasses
