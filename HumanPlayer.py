@@ -87,8 +87,21 @@ class HumanPlayer(Player):
         else:
             print("hit")
             self.gridShots.changeSingleSpace(shotRow, shotCol, "h")
-
+            otherPlayer.gridShips.changeSingleSpace(shotRow, shotCol, "h")
+            sunk = True
+            hitShip = otherPlayer.gridShips.returnLocation(shotRow, shotCol)
+            for row in otherPlayer.gridShips:
+                for col in otherPlayer.gridShips[row]:
+                    if otherPlayer.gridShips.returnLocation(row, col) == hitShip: sunk = True
+            if sunk:
+                print("you sunk", hitShip, "!")
             return otherPlayer.stillHasShips()
+
+    def stillHasShips(self):
+        for row in self.gridShips:
+            for col in self.gridShip[row]:
+                if self.gridShips.returnLocation(row, col) != "~" or "h" or "m":
+                    return True
 
 
 
