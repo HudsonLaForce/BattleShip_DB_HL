@@ -6,50 +6,50 @@ class HumanPlayer(Player):
         Player.__init__(self)
 
     def placeShip(self, ship, size):
-        print("lets place", ship, "that is", size, "long")
+        print("Place", ship, "that is", size, "squares long")
         while True:
-            shipStartX = int(input("What is the x-value of the ship's start: "))
-            shipStartY = int(input("What is the y-value of the ship's start: "))
+            shipStartRow = int(input("What is the row of the ship's start: "))
+            shipStartCol = int(input("What is the column of the ship's start: "))
             direction = input("What direction is the ship facing: ")
-            if 0 > shipStartX or shipStartX >= 10 or 0 > shipStartY or shipStartY >= 10:
-                print("invalid start position")
+            if 0 > shipStartRow or shipStartRow >= 10 or 0 > shipStartCol or shipStartCol >= 10:
+                print("Invalid start position")
                 continue
             if direction == "up":
-                if shipStartY - size < 0:
-                    print("ship goes out of grid")
+                if shipStartRow - size < 0:
+                    print("Ship goes out of grid")
                     continue
             elif direction == "down":
-                if shipStartY + size >= 10:
-                    print("ship goes out of grid")
+                if shipStartRow + size >= 10:
+                    print("Ship goes out of grid")
                     continue
             elif direction == "left":
-                if shipStartX - size < 0:
-                    print("ship goes out of grid")
+                if shipStartCol - size < 0:
+                    print("Ship goes out of grid")
                     continue
             elif direction == "right":
-                if shipStartX + size >= 10:
-                    print("ship goes out of grid")
+                if shipStartCol + size >= 10:
+                    print("Ship goes out of grid")
                     continue
             else:
-                print("invalid direction")
+                print("Invalid direction")
                 continue
 
             shipInWay = False
             for i in range(size):
-                if direction == "up" and not self.gridShips.isSpaceWater(shipStartX, shipStartY - i):
-                    print("ship in the way")
+                if direction == "up" and not self.gridShips.isSpaceWater(shipStartRow - i, shipStartCol):
+                    print("Ship in the way")
                     shipInWay = True
                     break
-                elif direction == "down" and not self.gridShips.isSpaceWater(shipStartX, shipStartY + i):
-                    print("ship in the way")
+                elif direction == "down" and not self.gridShips.isSpaceWater(shipStartRow + i, shipStartCol):
+                    print("Ship in the way")
                     shipInWay = True
                     break
-                elif direction == "left" and not self.gridShips.isSpaceWater(shipStartX - i, shipStartY):
-                    print("ship in the way")
+                elif direction == "left" and not self.gridShips.isSpaceWater(shipStartRow, shipStartCol - i):
+                    print("Ship in the way")
                     shipInWay = True
                     break
-                elif direction == "right" and not self.gridShips.isSpaceWater(shipStartX + i, shipStartY):
-                    print("ship in the way")
+                elif direction == "right" and not self.gridShips.isSpaceWater(shipStartRow, shipStartCol + i):
+                    print("Ship in the way")
                     shipInWay = True
                     break
             if shipInWay:
@@ -57,13 +57,13 @@ class HumanPlayer(Player):
             break
 
         if direction == "down":
-            self.gridShips.changeCol(shipStartY, ship, shipStartX, size)
+            self.gridShips.changeCol(shipStartCol, ship, shipStartRow, size)
         elif direction == "up":
-            self.gridShips.changeCol(shipStartY, ship, shipStartX - size + 1, size)
+            self.gridShips.changeCol(shipStartCol, ship, shipStartRow - size + 1, size)
         elif direction == "left":
-            self.gridShips.changeRow(shipStartX - size + 1, ship, shipStartY, size)
+            self.gridShips.changeRow(shipStartRow, ship, shipStartCol - size + 1, size)
         elif direction == "right":
-            self.gridShips.changeRow(shipStartX, ship, shipStartY, size)
+            self.gridShips.changeRow(shipStartRow, ship, shipStartCol, size)
         self.gridShips.printGrid()
 
 
