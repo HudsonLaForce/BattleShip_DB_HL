@@ -11,15 +11,17 @@ class ComputerPlayer(Player):
         if otherPlayer.gridShips.returnLocation(guess//10,guess%10) != "~":
             print("hit")
             self.gridShots.changeSingleSpace(guess//10,guess%10,"h")
+            shipHit = otherPlayer.gridShips.returnLocation(guess // 10, guess % 10)
+            otherPlayer.gridShips.changeSingle(guess // 10, guess % 10, "h")
             for row in otherPlayer.gridShips:
                 for col in otherPlayer.gridShips[row]:
-                    if otherPlayer.gridShips.returnLocation(row,col) == otherPlayer.gridShips.returnLocation(guess//10,guess%10):
-                        if self.gridShots.returnLocation(row,col) != "h":
-                            return
-            print("you sunk " + str(otherPlayer.gridShips.returnLocation(guess//10,guess%10)))
+                    if otherPlayer.gridShips.returnLocation(row,col) == shipHit:
+                        return
+            print("you sunk the opponents " + shipHit)
         else:
             print("miss")
             self.gridShots.changeSingleSpace(guess // 10, guess % 10, "m")
+            otherPlayer.gridShips.changeSingle(guess // 10, guess % 10, "m" )
 
     def placeShip(self, ship, size):
         if(random.randrange(0,2)==1):
@@ -39,4 +41,9 @@ class ComputerPlayer(Player):
             for b in range(size):
                 self.gridShips.changeSingleSpace(startRow + b, startColumn, ship)
 
-
+    def stillHasShips(self):
+        for row in self.gridShips:
+            for col in self.gridShips[row]:
+                if self.gridShips.returnLocation(row,col) != "~" or "h" or "m":
+                    return True
+        return False
