@@ -11,7 +11,7 @@ class HumanPlayer(Player):
             shipStartRow = int(input("What is the row of the ship's start: "))
             shipStartCol = int(input("What is the column of the ship's start: "))
             direction = input("What direction is the ship facing: ")
-            if 0 > shipStartRow or shipStartRow >= 10 or 0 > shipStartCol or shipStartCol >= 10:
+            if not (0 <= shipStartRow <= 9 and 0 <= shipStartCol <= 9):
                 print("Invalid start position")
                 continue
             if direction == "up":
@@ -66,7 +66,29 @@ class HumanPlayer(Player):
             self.gridShips.changeRow(shipStartRow, ship, shipStartCol, size)
         self.gridShips.printGrid()
 
-
-
     def takeTurn(self, otherPlayer):
-        pass
+        self.gridShots.printGrid()
+        while True:
+            shotRow = int(input("What is the row of your shot"))
+            shotCol = int(input("What is the column of your shot"))
+            if not (0 <= shotRow <= 9 and 0 <= shotCol <= 9):
+                print("Invalid shot position")
+                continue
+            elif not self.gridShots.isSpaceWater(shotRow, shotCol):
+                print("You have already shot here")
+                continue
+            else:
+                break
+
+        if otherPlayer.gridShips.isSpaceWater(shotRow, shotCol):
+            print("miss")
+            self.gridShots.changeSingleSpace(shotRow, shotCol, "m")
+            return False
+        else:
+            print("hit")
+            self.gridShots.changeSingleSpace(shotRow, shotCol, "h")
+
+            return otherPlayer.stillHasShips()
+
+
+
