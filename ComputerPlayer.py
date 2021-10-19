@@ -52,8 +52,8 @@ class ComputerPlayer(Player):
     # This method returns true if they still have ships
     # This method returns false if they don't have ships
     def stillHasShips(self):
-        for row in self.gridShips:#traverses grid
-            for col in self.gridShips[row]:#traverses grid
+        for row in range(10):#traverses grid
+            for col in range(10):#traverses grid
                 if self.gridShips.returnLocation(row,col) != "~" or "h" or "m":#if a ship is found returns true
                     return True
         return False
