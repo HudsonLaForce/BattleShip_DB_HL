@@ -78,8 +78,8 @@ class HumanPlayer(Player):
     def takeTurn(self, otherPlayer):
         self.gridShots.printGrid()
         while True: # runs until valid input
-            shotRow = int(input("What is the row of your shot"))
-            shotCol = int(input("What is the column of your shot"))
+            shotRow = int(input("What is the row of your shot: "))
+            shotCol = int(input("What is the column of your shot: "))
             if not (0 <= shotRow <= 9 and 0 <= shotCol <= 9):   # if the shot is not in the grid
                 print("Invalid shot position")
                 continue
@@ -114,7 +114,7 @@ class HumanPlayer(Player):
     def stillHasShips(self):
         for row in range(10):  # traverse rows in grid
             for col in range(10):  # traverse cols in grid
-                if self.gridShips.returnLocation(row, col) != "~" or "h" or "m":    # if there still is a ship
+                if self.gridShips.returnLocation(row, col) != "~" and "h" and "m":    # if there still is a ship
                     return True
 
 
