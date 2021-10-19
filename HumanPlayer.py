@@ -114,8 +114,6 @@ class HumanPlayer(Player):
     def stillHasShips(self):
         for row in range(10):  # traverse rows in grid
             for col in range(10):  # traverse cols in grid
-                if self.gridShips.returnLocation(row, col) != "~" and "h" and "m":    # if there still is a ship
+                if self.gridShips.returnLocation(row, col) != "~" and self.gridShips.returnLocation(row, col) != "h" and self.gridShips.returnLocation(row, col) != "m":    # if there still is a ship
                     return True
-
-
-
+        return False
