@@ -95,7 +95,11 @@ class HumanPlayer(Player):
                     if otherPlayer.gridShips.returnLocation(row, col) == hitShip: sunk = True
             if sunk:
                 print("you sunk", hitShip, "!")
-            return otherPlayer.stillHasShips()
+            if otherPlayer.stillHasShips():
+                print("you win!!")
+                return False
+            else:
+                return True
 
     def stillHasShips(self):
         for row in self.gridShips:
