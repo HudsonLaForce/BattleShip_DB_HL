@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/BattleShip_DB_HL.iml" filepath="$PROJECT_DIR$/.idea/BattleShip_DB_HL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BattleShip-DB+HL.iml" filepath="$PROJECT_DIR$/.idea/BattleShip-DB+HL.iml" />
     </modules>
   </component>
 </project>
