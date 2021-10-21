@@ -12,11 +12,7 @@ class Game:
                 print("Computer PLayer wins")
                 return
             self.player1.printGrids()
-            #print(self.player1.stillHasShips())
-            #print(self.player2.stillHasShips())
             if not self.player2.takeTurn(self.player1):
                 print("Computer PLayer wins")
                 return
             self.player2.printGrids()
-
-

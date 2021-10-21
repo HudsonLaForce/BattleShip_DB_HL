@@ -92,7 +92,7 @@ class HumanPlayer(Player):
         if otherPlayer.gridShips.isSpaceWater(shotRow, shotCol):    # if the shot is a miss
             print("miss")
             self.gridShots.changeSingleSpace(shotRow, shotCol, "m")
-            return False
+            return True
         else:   # if the shot is a hit
             print("hit")
             self.gridShots.changeSingleSpace(shotRow, shotCol, "h")
@@ -105,7 +105,7 @@ class HumanPlayer(Player):
                         sunk = True
             if sunk:    # if the ship is sunk
                 print("you sunk", hitShip, "!")
-            return otherPlayer.stillHasShips()
+        return otherPlayer.stillHasShips()
 
     """
     this method determines if the player still has ships to be sunk
