@@ -83,7 +83,7 @@ class HumanPlayer(Player):
             if not (0 <= shotRow <= 9 and 0 <= shotCol <= 9):   # if the shot is not in the grid
                 print("Invalid shot position")
                 continue
-            elif not self.gridShots.isSpaceWater(shotRow, shotCol): # if the shot has already been done
+            elif not self.gridShots.isSpaceWater(shotRow, shotCol):  # if the shot has already been done
                 print("You have already shot here")
                 continue
             else:   # if its a valid shot
@@ -99,9 +99,9 @@ class HumanPlayer(Player):
             otherPlayer.gridShips.changeSingleSpace(shotRow, shotCol, "h")
             sunk = True
             hitShip = otherPlayer.gridShips.returnLocation(shotRow, shotCol)
-            for row in otherPlayer.gridShips:   # traverse row in grid
-                for col in otherPlayer.gridShips[row]:  # traverse cols in grid
-                    if otherPlayer.gridShips.returnLocation(row, col) == hitShip: # if there are no more of that ship in the grid
+            for row in range(10):   # traverse row in grid
+                for col in range(10):  # traverse cols in grid
+                    if otherPlayer.gridShips.returnLocation(row, col) == hitShip:  # if the ships still in the grid
                         sunk = True
             if sunk:    # if the ship is sunk
                 print("you sunk", hitShip, "!")
