@@ -6,7 +6,7 @@ from Game import Game
 
 
 
-CP1 = ComputerPlayer()
-CP2 = ComputerPlayer()
-g = Game(CP1,CP2)
+HP = HumanPlayer()
+CP = ComputerPlayer()
+g = Game(HP,CP)
 g.playGame()

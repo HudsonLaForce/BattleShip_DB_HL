@@ -7,12 +7,13 @@ class Game:
     def playGame(self):
         self.player1.createShipGrid()
         self.player2.createShipGrid()
+
         while self.player1.stillHasShips() and self.player2.stillHasShips():
             if not self.player1.takeTurn(self.player2):
-                print("Computer PLayer wins")
+                print("Human Player wins")
                 return
             self.player1.printGrids()
             if not self.player2.takeTurn(self.player1):
-                print("Computer PLayer wins")
+                print("Computer Player wins")
                 return
             self.player2.printGrids()
