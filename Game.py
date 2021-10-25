@@ -10,14 +10,14 @@ class Game:
 
         while self.player1.stillHasShips() and self.player2.stillHasShips():
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            print("Human Computer PLayers Turn")
+            print("Human Players Turn")
             if not self.player1.takeTurn(self.player2):
                 print("Human Player wins")
                 return
             self.player1.printGrids()
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            print("Computer Computer PLayers Turn")
+            print("Computer Computer Players Turn")
             if not self.player2.takeTurn(self.player1):
                 print("Computer Player wins")
                 return
-            self.player2.printGrids()
+            self.player2.printGrids()#commment out later
