@@ -42,10 +42,10 @@ class ComputerPlayer(Player):
                     if hitCount >= 2:
                         self.addToGuessList(row, col, True)
                         self.addToGuessList(row, col-(hitCount+1), True)
-                        for x in range(hitCount):
-                            self.addToGuessList(row + 1, col - x, False)
-                        for x in range(hitCount):
-                            self.addToGuessList(row - 1, col - x, False)
+                        #for x in range(hitCount):
+                            #self.addToGuessList(row + 1, col - x, False)
+                        #for x in range(hitCount):
+                            #self.addToGuessList(row - 1, col - x, False)
                     hitCount = 0
         for col in range(10):
             hitCount = 0
@@ -56,26 +56,26 @@ class ComputerPlayer(Player):
                     if hitCount>=2:
                         self.addToGuessList(row ,col,True)
                         self.addToGuessList(row - (hitCount+1), col,True)
-                        for x in range(hitCount):
-                            self.addToGuessList(row - x, col + 1, False)
-                        for x in range(hitCount):
-                            self.addToGuessList(row - x, col - 1, False)
+                        #for x in range(hitCount):
+                            #self.addToGuessList(row - x, col + 1, False)
+                        #for x in range(hitCount):
+                            #self.addToGuessList(row - x, col - 1, False)
                         hitCount = 0
         if not bool(self.guessList):
             for row in range(10):
                 for col in range(10):
                     if self.loneHit(row,col) :
                         if row < 9:
-                            if self.gridShots.returnLocation(row + 1, col) == "h":
+                            if self.gridShots.returnLocation(row + 1, col) == "~":
                                 return self.Turn(otherPlayer,row+1,col)
                         if row > 0:
-                            if self.gridShots.returnLocation(row - 1, col) == "h":
+                            if self.gridShots.returnLocation(row - 1, col) == "~":
                                 return self.Turn(otherPlayer,row-1,col)
                         if col < 9:
-                            if self.gridShots.returnLocation(row, col + 1) == "h":
+                            if self.gridShots.returnLocation(row, col + 1) == "~":
                                 return self.Turn(otherPlayer,row,col+1)
                         if col > 0:
-                            if self.gridShots.returnLocation(row, col - 1) == "h":
+                            if self.gridShots.returnLocation(row, col - 1) == "~":
                                 return self.Turn(otherPlayer,row,col-1)
         if not bool(self.guessList):
             return self.randTurn(otherPlayer)
@@ -180,6 +180,6 @@ class ComputerPlayer(Player):
         for y in range(len(self.shotList)):
             if self.shotList[y].getResult() == "h":
                 return
-        self.shotList == []
-        self.guessList == []
+        self.shotList = []
+        self.guessList = []
 
