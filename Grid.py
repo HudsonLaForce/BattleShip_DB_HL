@@ -33,10 +33,23 @@ class Grid:
     def returnLocation(self , row , col ):
         return self.grid[row][col]
 
+    colors = {
+        "~": "\033[1;34m ~ \033[0;0m",
+        "m": "\033[1;37m m \033[0;0m",
+        "A": "\033[1;33m A \033[0;0m",
+        "B": "\033[1;33m B \033[0;0m",
+        "C": "\033[1;33m C \033[0;0m",
+        "S": "\033[1;33m S \033[0;0m",
+        "D": "\033[1;33m D \033[0;0m",
+        "h": "\033[1;31m h \033[0;0m"
+    }
     def printGrid(self):
-        for row in self.grid :
-            print( row )
-
+        for row in range(len(self.grid)) :
+            x = "["
+            for col in range(len(self.grid[row])):
+                x = x  + self.colors[self.grid[row][col]] + ","
+            x = x + "]"
+            print(x)
     # This is a useful method to determine if the space is "~" or something else
     # Send it the grid you want to check, so ship or shot
     def isSpaceWater(self, row, col):
