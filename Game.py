@@ -13,11 +13,12 @@ class Game:
             print("Human Players Turn")
             if not self.player1.takeTurn(self.player2):
                 print("Human Player wins")
-                return
             self.player1.printGrids()
+            x = input("continue?")
             print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-            print("Computer Computer Players Turn")
+            print("Computer Players Turn")
             if not self.player2.takeTurn(self.player1):
                 print("Computer Player wins")
-                return
+
             self.player2.printGrids()#commment out later
+            x = input("continue?")
